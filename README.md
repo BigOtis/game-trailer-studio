@@ -9,6 +9,14 @@ result, and re-capture affected shots when your game changes.
 The developer chooses the story, tone, music, moments and final cut. An agent can operate the same
 inspectable tools you can use manually. There is no model/API subscription required by this toolkit.
 
+## Watch the trailer
+
+[![Watch Cohesion Institute COLIN Project Introduction on YouTube](docs/images/cohesion-trailer-preview.jpg)](https://www.youtube.com/watch?v=DRdnVEWdDQw)
+
+**[Watch on YouTube: Cohesion Institute COLIN Project Introduction](https://www.youtube.com/watch?v=DRdnVEWdDQw).**
+This is the Cohesion production that inspired the toolkit. GitHub opens the preview on YouTube.
+The public toolkit is a separate, reusable implementation of that workflow.
+
 ## Included
 
 - Native UE5 viewport recording and master-submix PCM WAV capture.
@@ -21,6 +29,11 @@ inspectable tools you can use manually. There is no model/API subscription requi
 - Source-byte-based cache invalidation, versioned exports, actual full-decode/frame/audio checks.
 - Playable HTML reviews, chapter buttons, WebVTT/SRT captions and contact sheets.
 - A copyable agent skill, dependency bootstrap scripts, tests, examples and GitHub Actions.
+
+![Actual Game Trailer Studio review page, showing a typed gameplay request and five chapter buttons](docs/images/review-player.png)
+
+*The toolkit's actual review page. Historical Cohesion takes were imported and rendered into a new
+14-second documentation cut; chapter buttons seek the video. [Screenshot sources and gallery](docs/images/README.md).*
 
 ## Quick start: a complete cut without Unreal
 
@@ -98,6 +111,12 @@ Loading your checkpoint, opening your dialogue UI, issuing a companion task and 
 task succeeded require your Blueprint/C++ hooks. There is no universal "make coffee" command.
 [UE5 integration guide](docs/ue5.md) · [Protocol](docs/protocol.md) · [Minimal rendered fixture](docs/ue5.md#run-the-fixture)
 
+![Real UE5 viewport capture with a physics sphere above a cube and floor](docs/images/ue5-native-start.jpg)
+
+*A fresh 1920 × 1080 capture through the native UE5 adapter, using the independent fixture's
+floor, cube and physics sphere. The [end frame](docs/images/ue5-native-end.jpg) shows the sphere
+after its fall and the camera move. This is the test scene included by the fixture generator.*
+
 ## Agent skill
 
 ```sh
@@ -145,6 +164,11 @@ must align to output frames. Title artwork can be supplied as `image` on a `card
 [editing and re-capture](docs/editing.md) for music, captions, crop, pitch and replacement takes.
 Machine-readable schemas for editor integration live in [`schemas/`](schemas/).
 
+![Expanded edit manifest in the real review page, showing source take IDs, in-points and durations](docs/images/edit-manifest.png)
+
+*The same review page exposes the edit manifest: source ranges, purposes and audio treatment remain
+inspectable. Change the JSON file, then render a new version.*
+
 ## Refresh after an update
 
 1. Keep the previous build settings, takes and edit.
@@ -182,8 +206,9 @@ a separate opt-in self-hosted workflow. [Testing guide](docs/testing.md) and
 - Source/derived files are retained. This initial toolkit does not manage cloud storage, multiseat
   capture, an NLE timeline import/export, ASR alignment or distribution-platform uploads.
 - Technical verification cannot establish honest outcomes, good pacing, licensing or enjoyable
-  storytelling. Review those decisions yourself. No game assets, footage, music or model weights are
-  included. The toolkit does not modify your renderer/inference quality budget.
+  storytelling. Review those decisions yourself. Documentation includes credited still screenshots;
+  source game assets, video recordings, music and model weights are not included. The toolkit does
+  not modify your renderer/inference quality budget.
 
 ## Background and license
 
@@ -192,4 +217,5 @@ Created from the workflow described in
 then generalized into a separate implementation and native adapter.
 
 [MIT](LICENSE) for this toolkit. Unreal Engine and downloaded dependencies retain their own licenses;
-see [third-party notes](THIRD_PARTY.md). No engine binaries are distributed here.
+see [third-party notes](THIRD_PARTY.md). Documentation screenshot rights are described in
+[the image credits](docs/images/README.md). No engine binaries are distributed here.
