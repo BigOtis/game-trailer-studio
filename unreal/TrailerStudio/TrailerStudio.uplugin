@@ -1,0 +1,14 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "0.1.0",
+  "FriendlyName": "Game Trailer Studio",
+  "Description": "Opt-in Development gameplay capture, cameras and a local file bridge.",
+  "Category": "Cinematics",
+  "CreatedBy": "Phil Lopez",
+  "CanContainContent": false,
+  "Installed": false,
+  "Modules": [
+    {"Name": "TrailerStudio", "Type": "Runtime", "LoadingPhase": "Default", "TargetConfigurationDenyList": ["Shipping", "Test"]}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "name": "UE5 native fixture",
+  "purpose": "A real rendered fixture: falling physics sphere, moving camera, native procedural test tone.",
+  "setup": [
+    {"command": "camera_set", "arguments": {"location": {"x": -600, "y": -600, "z": 280}, "track": "cube", "fov": 65}},
+    {"command": "actor_set", "arguments": {"subject": "ball", "location": {"x": 0, "y": 230, "z": 260}}}
+  ],
+  "record": [
+    {"command": "demo_tone"},
+    {"mark": "Real physics and camera movement begin"},
+    {"command": "camera_move", "arguments": {"location": {"x": -400, "y": -650, "z": 240}, "track": "cube", "duration": 3}},
+    {"wait": {"path": "camera.moving", "equals": false, "timeout": 15}},
+    {"hold": 1}
+  ]
+}

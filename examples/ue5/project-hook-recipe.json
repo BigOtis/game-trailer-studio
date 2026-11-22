@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "name": "Example game interaction",
+  "purpose": "Template requiring YOUR game-specific project-command handler and observed state.",
+  "build": "replace-with-your-game-revision",
+  "setup": [
+    {"command": "project", "arguments": {"name": "load_capture_checkpoint", "payload": {"checkpoint": "workshop"}}},
+    {"wait": {"path": "project.checkpoint_ready", "equals": true, "timeout": 60}},
+    {"command": "camera_set", "arguments": {"location": {"x": -300, "y": 0, "z": 160}, "track": "companion", "fov": 70}}
+  ],
+  "record": [
+    {"command": "project", "arguments": {"name": "open_chat", "payload": {}}},
+    {"command": "type_text", "arguments": {"text": "Pick up that box.", "commit": true}},
+    {"wait": {"path": "project.box_is_held", "equals": true, "timeout": 120}},
+    {"hold": 2}
+  ]
+}

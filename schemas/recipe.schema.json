@@ -1,0 +1,132 @@
+{
+  "$defs": {
+    "Step": {
+      "additionalProperties": false,
+      "properties": {
+        "command": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Command"
+        },
+        "arguments": {
+          "additionalProperties": true,
+          "title": "Arguments",
+          "type": "object"
+        },
+        "wait": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Wait"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "hold": {
+          "anyOf": [
+            {
+              "maximum": 3600,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hold"
+        },
+        "mark": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mark"
+        }
+      },
+      "title": "Step",
+      "type": "object"
+    },
+    "Wait": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "equals": {
+          "default": true,
+          "title": "Equals"
+        },
+        "timeout": {
+          "default": 60,
+          "exclusiveMinimum": 0,
+          "maximum": 3600,
+          "title": "Timeout",
+          "type": "number"
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "title": "Wait",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 1,
+      "default": 1,
+      "title": "Version",
+      "type": "integer"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "purpose": {
+      "default": "",
+      "title": "Purpose",
+      "type": "string"
+    },
+    "setup": {
+      "items": {
+        "$ref": "#/$defs/Step"
+      },
+      "title": "Setup",
+      "type": "array"
+    },
+    "record": {
+      "items": {
+        "$ref": "#/$defs/Step"
+      },
+      "title": "Record",
+      "type": "array"
+    },
+    "build": {
+      "default": "",
+      "title": "Build",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "title": "Recipe",
+  "type": "object"
+}

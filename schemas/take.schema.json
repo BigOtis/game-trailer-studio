@@ -1,0 +1,67 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 1,
+      "default": 1,
+      "title": "Version",
+      "type": "integer"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "video": {
+      "title": "Video",
+      "type": "string"
+    },
+    "audio": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Audio"
+    },
+    "audio_offset": {
+      "default": 0,
+      "title": "Audio Offset",
+      "type": "number"
+    },
+    "provenance": {
+      "default": "gameplay",
+      "enum": [
+        "gameplay",
+        "editorial",
+        "synthetic-test"
+      ],
+      "title": "Provenance",
+      "type": "string"
+    },
+    "accepted": {
+      "default": true,
+      "title": "Accepted",
+      "type": "boolean"
+    },
+    "notes": {
+      "default": "",
+      "title": "Notes",
+      "type": "string"
+    },
+    "build": {
+      "default": "",
+      "title": "Build",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "video"
+  ],
+  "title": "Take",
+  "type": "object"
+}

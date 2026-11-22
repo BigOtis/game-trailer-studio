@@ -1,0 +1,260 @@
+{
+  "$defs": {
+    "Caption": {
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "number"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "number"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "start",
+        "end",
+        "text"
+      ],
+      "title": "Caption",
+      "type": "object"
+    },
+    "Music": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "offset": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "number"
+        },
+        "gain": {
+          "default": 0.12,
+          "maximum": 2,
+          "minimum": 0,
+          "title": "Gain",
+          "type": "number"
+        },
+        "envelope": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Envelope",
+          "type": "array"
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "title": "Music",
+      "type": "object"
+    },
+    "Shot": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "default": "take",
+          "enum": [
+            "take",
+            "card",
+            "static"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "take": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Take"
+        },
+        "source_in": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Source In",
+          "type": "number"
+        },
+        "duration": {
+          "exclusiveMinimum": 0,
+          "maximum": 3600,
+          "title": "Duration",
+          "type": "number"
+        },
+        "purpose": {
+          "default": "",
+          "title": "Purpose",
+          "type": "string"
+        },
+        "crop": {
+          "anyOf": [
+            {
+              "maxItems": 4,
+              "minItems": 4,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Crop"
+        },
+        "fit": {
+          "default": "contain",
+          "enum": [
+            "contain",
+            "cover"
+          ],
+          "title": "Fit",
+          "type": "string"
+        },
+        "title": {
+          "default": "",
+          "title": "Title",
+          "type": "string"
+        },
+        "subtitle": {
+          "default": "",
+          "title": "Subtitle",
+          "type": "string"
+        },
+        "image": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Image"
+        },
+        "audio_gain": {
+          "default": 1,
+          "maximum": 4,
+          "minimum": 0,
+          "title": "Audio Gain",
+          "type": "number"
+        },
+        "pitch_semitones": {
+          "default": 0,
+          "maximum": 12,
+          "minimum": -12,
+          "title": "Pitch Semitones",
+          "type": "number"
+        }
+      },
+      "required": [
+        "duration"
+      ],
+      "title": "Shot",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 1,
+      "default": 1,
+      "title": "Version",
+      "type": "integer"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "shots": {
+      "items": {
+        "$ref": "#/$defs/Shot"
+      },
+      "maxItems": 200,
+      "minItems": 1,
+      "title": "Shots",
+      "type": "array"
+    },
+    "expected_duration": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Expected Duration"
+    },
+    "music": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Music"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "captions": {
+      "items": {
+        "$ref": "#/$defs/Caption"
+      },
+      "title": "Captions",
+      "type": "array"
+    },
+    "burn_captions": {
+      "default": false,
+      "title": "Burn Captions",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "name",
+    "shots"
+  ],
+  "title": "Edit",
+  "type": "object"
+}

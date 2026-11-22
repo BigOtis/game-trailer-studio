@@ -1,0 +1,78 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 1,
+      "default": 1,
+      "title": "Version",
+      "type": "integer"
+    },
+    "name": {
+      "default": "My Game",
+      "title": "Name",
+      "type": "string"
+    },
+    "width": {
+      "default": 1920,
+      "maximum": 7680,
+      "minimum": 128,
+      "multipleOf": 2,
+      "title": "Width",
+      "type": "integer"
+    },
+    "height": {
+      "default": 1080,
+      "maximum": 4320,
+      "minimum": 128,
+      "multipleOf": 2,
+      "title": "Height",
+      "type": "integer"
+    },
+    "fps": {
+      "default": 30,
+      "maximum": 120,
+      "minimum": 1,
+      "title": "Fps",
+      "type": "integer"
+    },
+    "codec": {
+      "default": "libx264",
+      "enum": [
+        "libx264",
+        "h264_nvenc"
+      ],
+      "title": "Codec",
+      "type": "string"
+    },
+    "crf": {
+      "default": 18,
+      "maximum": 40,
+      "minimum": 0,
+      "title": "Crf",
+      "type": "integer"
+    },
+    "sample_rate": {
+      "const": 48000,
+      "default": 48000,
+      "title": "Sample Rate",
+      "type": "integer"
+    },
+    "background": {
+      "default": "#172127",
+      "title": "Background",
+      "type": "string"
+    },
+    "foreground": {
+      "default": "#f2f0e7",
+      "title": "Foreground",
+      "type": "string"
+    },
+    "accent": {
+      "default": "#58a6b8",
+      "title": "Accent",
+      "type": "string"
+    }
+  },
+  "title": "Project",
+  "type": "object"
+}

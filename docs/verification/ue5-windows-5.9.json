@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "engine": {
+    "MajorVersion": 5,
+    "MinorVersion": 9,
+    "PatchVersion": 0,
+    "Changelist": 60351404,
+    "CompatibleChangelist": 0,
+    "IsLicenseeVersion": 0,
+    "IsPromotedBuild": 1,
+    "BranchName": "++UE5+Release-5.9"
+  },
+  "checks": [
+    "Native plugin and independent game project compiled",
+    "BeginPlay registration/state and real project-command hook work",
+    "Actual viewport frames captured and decoded",
+    "Native master audio is audible",
+    "Observed physics sphere fall",
+    "Camera reaches requested end position",
+    "Rendered frames change during camera move",
+    "Captured source becomes a verified four-second edit/review"
+  ],
+  "audio_peak_s16": 1239,
+  "physics_ball_z": [
+    260,
+    30.000003815115004
+  ],
+  "platform": "Windows",
+  "verified_on": "2026-11-22",
+  "scene": "Generated independent fixture: floor, cube, physics sphere, native test tone; no game assets",
+  "capture": {
+    "width": 640,
+    "height": 360,
+    "fps": 30,
+    "wall_seconds": 4.238119900226593,
+    "captured_frames": 2099,
+    "encoded_frames": 128,
+    "first_frame_seconds": 0.005844499915838242,
+    "encoder_exit": 0,
+    "audio_written": true,
+    "passed": true,
+    "engine_version": "5.9.0-60351404+++UE5+Release-5.9",
+    "source": "Real-time viewport and master submix; CFR repeats frames when needed; no motion interpolation or simulation-speed changes."
+  },
+  "export": {
+    "passed": true,
+    "frames": 120,
+    "duration_seconds": 4.0,
+    "width": 640,
+    "height": 360,
+    "fps": 30
+  },
+  "isolated_process_stopped": true
+}

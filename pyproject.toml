@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "game-trailer-studio"
+version = "0.1.0"
+description = "Repeatable real-gameplay capture and manifest-based trailer production, with a UE5 adapter."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "Phil Lopez"}]
+dependencies = ["pydantic>=2.10,<3", "imageio-ffmpeg>=0.6,<0.7", "av>=14", "Pillow>=10.4", "psutil>=5.9"]
+
+[project.urls]
+Repository = "https://github.com/BigOtis/game-trailer-studio"
+Documentation = "https://github.com/BigOtis/game-trailer-studio/blob/main/README.md"
+Issues = "https://github.com/BigOtis/game-trailer-studio/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.9"]
+
+[project.scripts]
+trailer-studio = "trailer_studio.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/trailer_studio"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"unreal/TrailerStudio" = "trailer_studio/bundled/TrailerStudio"
+"skills/game-trailer-production" = "trailer_studio/bundled/game-trailer-production"
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "unreal", "skills", "docs", "examples", "scripts", "tests", "schemas", ".github", ".gitattributes", ".gitignore", ".clang-format", "pyproject.toml", "uv.lock", "LICENSE", "THIRD_PARTY.md", "README.md", "AGENTS.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
